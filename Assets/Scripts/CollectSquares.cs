@@ -1,30 +1,22 @@
 using UnityEngine;
 using TMPro; 
-public class CollectCoins : MonoBehaviour
+public class CollectSquares : MonoBehaviour
 {
-
-    public GameObject Square;
 
     private int score = 0;
 
     public TextMeshProUGUI scoreText;
 
 
-    OnCollisionEnter(Collision other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        Destroy(GameObject);
-        score += 1;
+        if (other.gameObject.CompareTag("Square")){
+            Destroy(other.gameObject);
+            Debug.Log("hiting");
+            score += 1;
+            scoreText.text = "Score: " + score.ToString();
+        }
 
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
